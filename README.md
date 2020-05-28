@@ -1,12 +1,11 @@
-# WhiteBIT API helper
+# WhiteBIT API Quickstart
 
-Quick start working with private api of [WhiteBIT](https://whitebit.com)
+Quick start for interaction with private API of [WhiteBIT](https://whitebit.com)
 
 Languages:
 
-- [Python](https://github.com/miracleAlex/whitebit-api-help/tree/master/src/python)
-- [PHP](https://github.com/miracleAlex/whitebit-api-help/tree/master/src/php)
-- [NodeJS](https://github.com/miracleAlex/whitebit-api-help/tree/master/src/nodeJS)
-- [Go](https://github.com/miracleAlex/whitebit-api-help/tree/master/src/go)
+- [Python](./src/python)
+- [PHP](./src/php)
+- [NodeJS](./src/nodeJS)
+- [Go](./src/go)
 - Java (coming soon)
-
