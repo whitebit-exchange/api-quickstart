@@ -8,4 +8,5 @@ Languages:
 - [PHP](./src/php)
 - [NodeJS](./src/nodeJS)
 - [Go](./src/go)
-- Java (coming soon)
+- [Java](./src/java)
+- [Kotlin](./src/kotlin)
