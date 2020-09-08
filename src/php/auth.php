@@ -4,7 +4,7 @@ $apiSecret = ''; //put here your secret key
 $request = '/api/v4/trade-account/balance'; //put here request path. For obtaining trading balance use: /api/v4/trade-account/balance
 $baseUrl = 'https://whitebit.com'; //domain without last slash. Do not use https://whitebit.com/
 //If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
-$nonce = (string)time(); //nonce is a number that is always higher than the previous request number
+$nonce = (string) (int) (microtime(true) * 10000); //nonce is a number that is always higher than the previous request number
 
 $data = [
     'ticker' => 'BTC', //for example for obtaining trading balance for BTC currency
