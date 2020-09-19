@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -72,8 +74,8 @@ namespace TradeAccountBalance
         {
             byte[] bytes = Encoding.UTF8.GetBytes(text);
 
-            var hmac = new Org.BouncyCastle.Crypto.Macs.HMac(new Org.BouncyCastle.Crypto.Digests.Sha512Digest());
-            hmac.Init(new Org.BouncyCastle.Crypto.Parameters.KeyParameter(System.Text.Encoding.UTF8.GetBytes(key)));
+            var hmac = new HMac(new Org.BouncyCastle.Crypto.Digests.Sha512Digest());
+            hmac.Init(new KeyParameter(System.Text.Encoding.UTF8.GetBytes(key)));
 
             byte[] result = new byte[hmac.GetMacSize()];
             hmac.BlockUpdate(bytes, 0, bytes.Length);
@@ -87,7 +89,6 @@ namespace TradeAccountBalance
 
             return hash.ToString();
         }
-        
         private static long ToLong(this double value)
         {
             return (long)(value / 1000);
