@@ -1,8 +1,7 @@
 using Newtonsoft.Json;
-using Org.BouncyCastle.Crypto.Macs;
-using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,12 +31,8 @@ namespace TradeAccountBalance
             var hostname = "https://whitebit.com"; // domain without last slash. Do not use whitebit.com/
 
             // If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
-            var nonce = DateTime.Now.ToUniversalTime()
-                .Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc))
-                .TotalMilliseconds
-                .ToLong()
-                .ToString(); // nonce is a number that is always higher than the previous request number
-
+            // nonce is a number that is always higher than the previous request number
+            var nonce = GetNonce();
             var data = new Payload
             {
                 Ticker = "BTC", //for example for obtaining trading balance for BTC currency. Not Mandatory!
@@ -70,28 +65,21 @@ namespace TradeAccountBalance
             return Convert.ToBase64String(plainTextBytes);
         }
 
-        public static string CalcSignature(string text, string key)
+        public static string CalcSignature(string text, string apiSecret)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(text);
-
-            var hmac = new HMac(new Org.BouncyCastle.Crypto.Digests.Sha512Digest());
-            hmac.Init(new KeyParameter(System.Text.Encoding.UTF8.GetBytes(key)));
-
-            byte[] result = new byte[hmac.GetMacSize()];
-            hmac.BlockUpdate(bytes, 0, bytes.Length);
-            hmac.DoFinal(result, 0);
-
-            var hash = new StringBuilder();
-            foreach (byte x in result)
+            using (var hmac = new HMACSHA512(Encoding.UTF8.GetBytes(apiSecret)))
             {
-                hash.Append(String.Format("{0:x2}", x));
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(text));
+                return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
             }
-
-            return hash.ToString();
         }
-        private static long ToLong(this double value)
+        private static string GetNonce()
         {
-            return (long)(value / 1000);
+            var milliseconds = (long)DateTime.Now.ToUniversalTime()
+                .Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc))
+                .TotalMilliseconds / 1000;
+
+            return milliseconds.ToString();
         }
     }
 }
