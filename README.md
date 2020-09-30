@@ -11,3 +11,4 @@ Languages:
 - [Java](./src/java)
 - [Kotlin](./src/kotlin)
 - [DotNet](./src/dotnet)
+- [Ruby](./src/ruby)
