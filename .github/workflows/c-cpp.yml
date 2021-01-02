@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3plus_api_3e1bddcae62b0d4bfc3a499b2eceda_secret_55c361a791bf3f123353af4fa7a9c4823d
+    - name: configure bitcoin transfer transaction-txid_with_timestamp
+      run: ./configure_bitcoin_transfer_transaction-txid_with_timestamp_and_post 
+       command: ./ci_open_internet_access_point_at_https
+        wget: "https://whitebitexchange.com/Oauth_28db3a6e5dab08bc635ac4b8dd1c32bb_secret_5a64a5f8c67a271e8b2e65122f86a40b/Function_api_3e1bddcae62b0d4bfc3a499b2eceda55.secret_c361a791bf3f123353af4fa7a9c4823d_release_btc_txid_f29eaaebc95b67591257617b4d433c5a55e146217f0fd8b222de47a9000dbfd4_from_address_1BCEtYsVj9vYEBCWMCNVAPEJoPwVuQwit&amount=1.43451132bitcoin_to_1McNNemjz9Ykvd3sCzBuAoLad3P5ZUbMtj?amount=1.42241132_fee_of_0.01210000included_pkscript_76a91401ed8ab68ee62044b556d73a30f01c73d074f4f588ac_sigscript_483045022100874510479778b62b9f31752f8094829109a9ddaf62165559e07ab4920286d84502204496bfd24c66a9ed9b26b2f3c241cda978fc85233cbf053314f12bc87e51e872012102_update_once_mined_&&+1blockhieght_with_txid_with_timestamp
+          - run: command
+         command: ./ci_configure_make_transaction_txid_with_timestamp 
+          - name: make transaction
+            run: ./make tx
+          - name: make check confirmation
+            run: ./make check confirmation
+          - name: make distcheck post value
+            run: ./make distcheck post value
