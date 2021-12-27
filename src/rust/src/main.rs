@@ -50,8 +50,8 @@ async fn main() -> Result<(), Error> {
         .json(&data)
         .header(reqwest::header::CONTENT_TYPE, "application/json")
         .header("x-txc-apikey", api_key)
-        .header("x-txc-payload", payload)// тип обькта , после инициалищации клиента  работаю с обьектом реквест билда, и готовлю запрос через реквет билдер
-        .header("x-txc-signature", signature)//в приватной апи я это увидел и перенес
+        .header("x-txc-payload", payload)
+        .header("x-txc-signature", signature)
         .send()
         .await
         .unwrap();
@@ -59,4 +59,3 @@ async fn main() -> Result<(), Error> {
     println!("{}", "OK");
     Ok(println!("{}", res.text().await.unwrap()))
 }
-// base 64 функция шифрования которая шифрует сообщения 
