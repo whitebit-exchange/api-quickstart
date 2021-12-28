@@ -13,3 +13,4 @@ Languages:
 - [DotNet](./src/dotnet)
 - [Ruby](./src/ruby)
 - [C++](./src/c++)
+- [Rust](./src/rust)
