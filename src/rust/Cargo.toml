@@ -1,8 +1,7 @@
 [package]
 name = "rust"
 version = "0.1.0"
-authors = ["Vitalii Zhygulin"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 base64 = "0.13.0"
