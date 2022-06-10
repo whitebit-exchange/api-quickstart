@@ -5,11 +5,13 @@ $request = '/api/v4/trade-account/balance'; //put here request path. For obtaini
 $baseUrl = 'https://whitebit.com'; //domain without last slash. Do not use https://whitebit.com/
 //If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
 $nonce = (string) (int) (microtime(true) * 10000); //nonce is a number that is always higher than the previous request number
+$nonceWindow = false; //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 $data = [
     'ticker' => 'BTC', //for example for obtaining trading balance for BTC currency
     'request' => $request,
     'nonce' => $nonce,
+    'nonceWindow' => $nonceWindow,
 ];
 
 //preparing request URL
