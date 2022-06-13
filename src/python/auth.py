@@ -17,7 +17,8 @@ nonce = str(int(time.time())) #nonce is a number that is always higher than the 
 data = {
   'ticker': 'BTC', #for example for obtaining trading balance for BTC currency
   'request': request,
-  'nonce': nonce
+  'nonce': nonce,
+    'nonceWindow': True # the api will validate that your nonce enter the range of current time +/- 5 seconds
 }
 
 #preparing request URL
