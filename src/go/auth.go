@@ -26,7 +26,7 @@ func (api *apiHelper) SendRequest(requestURL string, data map[string]interface{}
 
 	data["request"] = requestURL
 	data["nonce"] = strconv.Itoa(nonce)
-	data["nonceWindow"] = false //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
+	data["nonceWindow"] = true //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 	requestBody, err := json.Marshal(data)
 	if err != nil {
