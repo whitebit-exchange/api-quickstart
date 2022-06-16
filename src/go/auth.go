@@ -20,12 +20,13 @@ type apiHelper struct {
 	BaseURL   string
 }
 
-func (api *apiHelper) SendRequest(requestURL string, data map[string]string) (responseBody []byte, err error) {
+func (api *apiHelper) SendRequest(requestURL string, data map[string]interface{}) (responseBody []byte, err error) {
 	//If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
 	nonce := int(time.Now().Unix()) //nonce is a number that is always higher than the previous request number
 
 	data["request"] = requestURL
 	data["nonce"] = strconv.Itoa(nonce)
+	data["nonceWindow"] = true //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 	requestBody, err := json.Marshal(data)
 	if err != nil {
@@ -71,8 +72,8 @@ func (api *apiHelper) SendRequest(requestURL string, data map[string]string) (re
 
 func main() {
 	provider := apiHelper{
-		PublicKey: "", //put here your public key
-		SecretKey: "", //put here your secret key
+		PublicKey: "",                     //put here your public key
+		SecretKey: "",                     //put here your secret key
 		BaseURL:   "https://whitebit.com", //domain without last slash. Do not use https://whitebit.com/
 	}
 
@@ -80,7 +81,7 @@ func main() {
 	request := "/api/v4/trade-account/balance"
 
 	//put here data to send
-	data := map[string]string{
+	data := map[string]interface{}{
 		"ticker": "BTC", //for example for obtaining trading balance for BTC currency
 	}
 
