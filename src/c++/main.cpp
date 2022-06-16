@@ -7,6 +7,7 @@
 #include <boost/archive/iterators/transform_width.hpp>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 using namespace std;
 using namespace std::chrono;
@@ -45,11 +46,13 @@ int main() {
     auto nonce = duration_cast<milliseconds>(
             system_clock::now().time_since_epoch()
     ); // nonce is a number that is always higher than the previous request number
+    static const string_view nonce_window = "true"; //This feature can be useful in high-frequency concurrent systems.
 
     string data_json = string(R"({"request":")").append(method).
                        append(R"(","ticker":")").append(ticker).
                        append(R"(","nonce":")").append(to_string(nonce.count())).
-                       append(R"("})");
+                       append(R"(","nonceWindow":)").append(nonce_window).
+                       append(R"(})");
 
     // payload and signature
     string payload = calculate_payload(data_json);
