@@ -10,11 +10,13 @@ base_url = 'https://whitebit.com' # domain without last slash. Do not use https:
 ticker = 'BTC'
 request = '/api/v4/trade-account/balance' # put here request path. For obtaining trading balance use: /api/v4/trade-account/balance
 nonce = (Time.now.to_f * 1000).to_i
+nonce_window = true # boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 data = {
     'ticker': ticker,
     'request': request,
-    'nonce': nonce
+    'nonce': nonce,
+    'nonceWindow': nonce_window
 }
 
 complete_url = base_url + request
