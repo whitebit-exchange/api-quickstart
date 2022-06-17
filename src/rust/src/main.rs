@@ -22,11 +22,13 @@ async fn main() -> Result<(), Error> {
             .expect("Time went backwards")
             .as_millis()
             .to_string();
+    let nonceWindow = true;
 
     let data = json!({
         "ticker": "BTC",
         "request": request,
-        "nonce": &nonce
+        "nonce": &nonce,
+        "nonceWindow": nonceWindow
     });
 
     let payload = encode(data.to_string());
