@@ -6,12 +6,14 @@ let apiSecret = ''; //put here your secret key
 let request = '/api/v4/trade-account/balance'; //put here request path. For obtaining trading balance use: /api/v4/trade-account/balance
 let hostname = 'whitebit.com'; //domain without last slash. Do not use whitebit.com/
 //If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
-let nonce = (Date.now() / 1000).toFixed(0);//nonce is a number that is always higher than the previous request number
+let nonce = Date.now(); //nonce is a number that is always higher than the previous request number
+let nonceWindow = true; //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 let data = {
     currency: "BTC", //for example for obtaining trading balance for BTC currency
     request: request,
-    nonce: nonce
+    nonce: nonce,
+    nonceWindow: nonceWindow
 }
 
 
