@@ -14,6 +14,9 @@ namespace TradeAccountBalance
 
         [JsonProperty("nonce")]
         public string Nonce { get; set; }
+        
+        [JsonProperty("nonceWindow")]
+        public bool NonceWindow { get; set; }
 
         [JsonProperty("ticker")]
         public string Ticker { get; set; }
@@ -33,11 +36,13 @@ namespace TradeAccountBalance
             // If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
             // nonce is a number that is always higher than the previous request number
             var nonce = GetNonce();
+            var nonceWindow = true; // boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
             var data = new Payload
             {
                 Ticker = "BTC", //for example for obtaining trading balance for BTC currency. Not Mandatory!
                 Nonce = nonce,
-                Request = request
+                Request = request,
+                NonceWindow = nonceWindow
             };
 
             var dataJsonStr = JsonConvert.SerializeObject(data);
@@ -77,7 +82,7 @@ namespace TradeAccountBalance
         {
             var milliseconds = (long)DateTime.Now.ToUniversalTime()
                 .Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc))
-                .TotalMilliseconds / 1000;
+                .TotalMilliseconds;
 
             return milliseconds.ToString();
         }
