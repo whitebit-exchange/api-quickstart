@@ -18,7 +18,7 @@ public class TradeAccountBalanceJava {
 
     public static void main(String[] args) throws Exception {
         // Create Json object (You should use your favorite Json de-serialization library)
-        String dataJson = String.format("{\"request\":\"%1$s\",\"ticker\":\"%2$s\",\"nonce\":\"%3$s\"}",
+        String dataJson = String.format("{\"request\":\"%1$s\",\"ticker\":\"%2$s\",\"nonce\":\"%3$s\",\"nonceWindow\":true}",
                 BALANCE_METHOD,
                 "BTC", // I want to get the balance for the BTC ticker
                 System.currentTimeMillis()); // nonce is a number that is always higher than the previous request number
