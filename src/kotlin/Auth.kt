@@ -17,7 +17,7 @@ fun main() {
     val nonce = System.currentTimeMillis() // nonce is a number that is always higher than the previous request number
 
     // Create Json object (You should use your favorite Json de-serialization library)
-    val dataJson = "{\"request\":\"$BALANCE_METHOD\",\"ticker\":\"$ticker\",\"nonce\":\"$nonce\"}";
+    val dataJson = "{\"request\":\"$BALANCE_METHOD\",\"ticker\":\"$ticker\",\"nonce\":\"$nonce\",\"nonceWindow\":true}";
 
     // Payload and signature
     val payload = Base64.getEncoder().encodeToString(dataJson.toByteArray())
