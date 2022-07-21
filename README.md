@@ -2,6 +2,9 @@
 
 Quick start for interaction with private API of [WhiteBIT](https://whitebit.com)
 
+SDKs:
+- [Unofficial Python SDK](https://github.com/Toni-d-e-v/whitebit-sdk)
+
 Languages:
 
 - [Python](./src/python)
