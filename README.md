@@ -14,3 +14,4 @@ Languages:
 - [Ruby](./src/ruby)
 - [C++](./src/c++)
 - [Rust](./src/rust)
+- [Swift](./src/swift)
