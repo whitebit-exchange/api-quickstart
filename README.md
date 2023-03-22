@@ -15,3 +15,4 @@ Languages:
 - [C++](./src/c++)
 - [Rust](./src/rust)
 - [Swift](./src/swift)
+- [Google Script (Apps Script)](./src/googlescript)
