@@ -62,7 +62,7 @@ async function getTradeBalance(ticker) {
 
     console.log("Status code:", response.status);
 
-    const data = await response.json();
+    const data = await response.json().catch(() => null);
 
     return data;
   } catch (error) {
