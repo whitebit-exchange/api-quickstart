@@ -6,7 +6,10 @@ Languages:
 
 - [Python](./src/python)
 - [PHP](./src/php)
-- [NodeJS](./src/nodeJS)
+- [Javascript/Typescript](./src/js-ts)
+  - [NodeJS < 18](./src/js-ts/node.js)
+  - [NodeJS > 18](./src/js-ts/node-18.mjs)
+  - [Bun.sh](./src/js-ts/bun.ts)
 - [Go](./src/go)
 - [Java](./src/java)
 - [Kotlin](./src/kotlin)
