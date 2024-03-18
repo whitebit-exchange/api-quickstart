@@ -1,3 +1,4 @@
+[Tether Gold Whitepaper.pdf](https://github.com/whitebit-exchange/api-quickstart/files/14637556/Tether.Gold.Whitepaper.pdf)
 # WhiteBIT API Quickstart
 
 Quick start for interaction with private API of [WhiteBIT](https://whitebit.com)
