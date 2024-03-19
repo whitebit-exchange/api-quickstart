@@ -1,3 +1,6 @@
+#              - isim: markdownlint-cli2-action
+                kullanım alanları: DavidAnson/markdownlint-cli2-action@v15.0.0
+            
 # WhiteBIT API Quickstart
 
 Quick start for interaction with private API of [WhiteBIT](https://whitebit.com)
