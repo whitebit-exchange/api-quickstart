@@ -22,10 +22,10 @@ type apiHelper struct {
 
 func (api *apiHelper) SendRequest(requestURL string, data map[string]interface{}) (responseBody []byte, err error) {
 	//If the nonce is similar to or lower than the previous request number, you will receive the 'too many requests' error message
-	nonce := int(time.Now().Unix()) //nonce is a number that is always higher than the previous request number
+	nonce := time.Now().UnixMilli() //nonce is a number that is always higher than the previous request number
 
 	data["request"] = requestURL
-	data["nonce"] = strconv.Itoa(nonce)
+	data["nonce"] = nonce
 	data["nonceWindow"] = true //boolean, enable nonce validation in time range of current time +/- 5s, also check if nonce value is unique
 
 	requestBody, err := json.Marshal(data)
